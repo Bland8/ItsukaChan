@@ -98,13 +98,13 @@ export async function handler(chatUpdate) {
                     if (!('sPromote' in chat)) chat.sPromote = ''
                     if (!('sDemote' in chat)) chat.sDemote = ''
                     if (!('delete' in chat)) chat.delete = true
-                    if (!('antiLink' in chat)) chat.antiLink = false 
+                    if (!('antiLink' in chat)) chat.antiLink = true 
                     if (!('antiSticker' in chat)) chat.antiSticker = false
-                    if (!('stiker' in chat)) chat.stiker = false
+                    if (!('stiker' in chat)) chat.stiker = true
                     if (!('mute' in chat)) chat.mute = true 
                     if (!('viewonce' in chat)) chat.viewonce = false
                     if (!('useDocument' in chat)) chat.useDocument = false
-                    if (!('nsfw' in chat)) chat.nsfw = false
+                    if (!('nsfw' in chat)) chat.nsfw = true
                     if (!('premnsfw' in chat)) chat.premnsfw = false
 			        if (!('premium' in chat)) chat.premium = false
                     if (!('premiumTime' in chat)) chat.premiumTime = false
@@ -119,7 +119,7 @@ export async function handler(chatUpdate) {
                     sDemote: '',
                     delete: true,
                     antiLink: false,
-                    stiker: false,
+                    stiker: true,
                     mute: true,
                     antiSticker: false,
                     viewonce: false,
@@ -133,7 +133,7 @@ export async function handler(chatUpdate) {
                 let settings = db.data.settings[this.user.jid]
                 if (typeof settings !== 'object') db.data.settings[this.user.jid] = {}
                 if (settings) {
-                if (!'anticall' in settings) settings.anticall = true
+                if (!'anticall' in settings) settings.anticall = false
                 if (!('self' in settings)) settings.self = false
                 if (!('autoread' in settings)) settings.autoread = false
                 if (!('restrict' in settings)) settings.restrict = false
@@ -143,7 +143,7 @@ export async function handler(chatUpdate) {
 		        if (!isNumber(settings.backupTime)) settings.backupTime = 0
 		        if (!isNumber(settings.status)) settings.status = 0
 		        } else db.data.settings[this.user.jid] = {
-                anticall: true,
+                anticall: false,
                 self: false,
                 autoread: false,
                 restrict: false,
